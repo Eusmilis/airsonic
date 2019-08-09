@@ -118,6 +118,14 @@
             <td>
             </td>
             <td>
+                <form:checkbox path="sortDirectoriesBeforeAlbums" id="sortDirectoriesBeforeAlbums"/>
+                <label for="sortDirectoriesBeforeAlbums"><fmt:message key="generalsettings.sortdirectoriesbeforealbums"/></label>
+            </td>
+        </tr>
+        <tr>
+            <td>
+            </td>
+            <td>
                 <form:checkbox path="gettingStartedEnabled" id="gettingStartedEnabled"/>
                 <label for="gettingStartedEnabled"><fmt:message key="generalsettings.showgettingstarted"/></label>
             </td>

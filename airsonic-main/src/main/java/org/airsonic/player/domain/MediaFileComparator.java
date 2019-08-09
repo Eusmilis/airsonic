@@ -27,9 +27,11 @@ import java.util.Comparator;
 public class MediaFileComparator implements Comparator<MediaFile> {
 
     private final boolean sortAlbumsByYear;
+    private final boolean sortDirectoriesBeforeAlbums;
 
-    public MediaFileComparator(boolean sortAlbumsByYear) {
+    public MediaFileComparator(boolean sortAlbumsByYear, boolean sortDirectoriesBeforeAlbums) {
         this.sortAlbumsByYear = sortAlbumsByYear;
+        this.sortDirectoriesBeforeAlbums = sortDirectoriesBeforeAlbums;
     }
 
     public int compare(MediaFile a, MediaFile b) {
@@ -43,11 +45,13 @@ public class MediaFileComparator implements Comparator<MediaFile> {
         }
 
         // Non-album directories before album directories.
-        if (a.isAlbum() && b.getMediaType() == MediaFile.MediaType.DIRECTORY) {
-            return 1;
-        }
-        if (a.getMediaType() == MediaFile.MediaType.DIRECTORY && b.isAlbum()) {
-            return -1;
+        if (sortDirectoriesBeforeAlbums) {
+            if (a.isAlbum() && b.getMediaType() == MediaFile.MediaType.DIRECTORY) {
+                return 1;
+            }
+            if (a.getMediaType() == MediaFile.MediaType.DIRECTORY && b.isAlbum()) {
+                return -1;
+            }
         }
 
         // Sort albums by year

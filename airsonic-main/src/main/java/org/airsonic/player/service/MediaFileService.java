@@ -202,7 +202,7 @@ public class MediaFileService {
         }
 
         if (sort) {
-            Comparator<MediaFile> comparator = new MediaFileComparator(settingsService.isSortAlbumsByYear());
+            Comparator<MediaFile> comparator = new MediaFileComparator(settingsService.isSortAlbumsByYear(), settingsService.isSortDirectoriesBeforeAlbums());
             // Note: Intentionally not using Collections.sort() since it can be problematic on Java 7.
             // http://www.oracle.com/technetwork/java/javase/compatibility-417013.html#jdk7
             Set<MediaFile> set = new TreeSet<MediaFile>(comparator);

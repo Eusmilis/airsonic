@@ -98,6 +98,7 @@ public class SettingsService {
     private static final String KEY_LAST_SCANNED = "LastScanned";
     private static final String KEY_ORGANIZE_BY_FOLDER_STRUCTURE = "OrganizeByFolderStructure";
     private static final String KEY_SORT_ALBUMS_BY_YEAR = "SortAlbumsByYear";
+    private static final String KEY_SORT_DIRECTORIES_BEFORE_ALBUMS = "SortDirectoriesBeforeAlbums";
     private static final String KEY_MEDIA_LIBRARY_STATISTICS = "MediaLibraryStatistics";
     private static final String KEY_DLNA_ENABLED = "DlnaEnabled";
     private static final String KEY_DLNA_SERVER_NAME = "DlnaServerName";
@@ -181,6 +182,7 @@ public class SettingsService {
     private static final long DEFAULT_SETTINGS_CHANGED = 0L;
     private static final boolean DEFAULT_ORGANIZE_BY_FOLDER_STRUCTURE = true;
     private static final boolean DEFAULT_SORT_ALBUMS_BY_YEAR = true;
+    private static final boolean DEFAULT_SORT_DIRECTORIES_BEFORE_ALBUMS = true;
     private static final String DEFAULT_MEDIA_LIBRARY_STATISTICS = "0 0 0 0 0";
     private static final boolean DEFAULT_DLNA_ENABLED = false;
     private static final String DEFAULT_DLNA_SERVER_NAME = "Airsonic";
@@ -742,8 +744,16 @@ public class SettingsService {
         return getBoolean(KEY_SORT_ALBUMS_BY_YEAR, DEFAULT_SORT_ALBUMS_BY_YEAR);
     }
 
+    public boolean isSortDirectoriesBeforeAlbums() {
+        return getBoolean(KEY_SORT_DIRECTORIES_BEFORE_ALBUMS, DEFAULT_SORT_DIRECTORIES_BEFORE_ALBUMS);
+    }
+
     public void setSortAlbumsByYear(boolean b) {
         setBoolean(KEY_SORT_ALBUMS_BY_YEAR, b);
+    }
+
+    public void setSortDirectoriesBeforeAlbums(boolean b) {
+        setBoolean(KEY_SORT_DIRECTORIES_BEFORE_ALBUMS, b);
     }
 
     public boolean getIgnoreSymLinks() {
